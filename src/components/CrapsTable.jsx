@@ -5,6 +5,14 @@ import useCrapsGame from "../hooks/useCrapsGame";
 const CrapsTable = () => {
   const { gameState, rollDice } = useCrapsGame();
 
+ // Eventually put these puck swaures into a bigger container for all the number spots
+ // container for place and buy
+ // Container for the puck squares
+ // container for come and don't come
+ // container for field
+ // container for don't pass and pass
+ // container for side bets
+
   return (
     <div>
       <h2>{gameState.message} | Puck is: {gameState.isPuckOn ? gameState.puckLocation : 'OFF'}</h2>

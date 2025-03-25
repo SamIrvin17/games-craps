@@ -7,7 +7,7 @@ const PuckSquare = ({ number }) => {
 
     return (
         <div className={`puck-square ${isPuckOn && puckLocation === number ? 'puck-on' : ''}`}>
-            {number}
+            {number}{isPuckOn && puckLocation === number ? ' - ON' : ''}
         </div>
     );
 
