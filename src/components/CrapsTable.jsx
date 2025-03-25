@@ -1,5 +1,6 @@
 import React from "react";
-import PuckSquare from "./PuckSquare";
+import PuckSquaresRow from "./PuckSquaresRow";
+import Dice from "./Dice";
 import useCrapsGame from "../hooks/useCrapsGame";
 
 const CrapsTable = () => {
@@ -17,13 +18,21 @@ const CrapsTable = () => {
     <div>
       <h2>{gameState.message} | Puck is: {gameState.isPuckOn ? gameState.puckLocation : 'OFF'}</h2>
       <h2>Dice: {gameState.dice[0]} - {gameState.dice[1]}</h2>
-      <PuckSquare number={4} />
-      <PuckSquare number={5} />
-      <PuckSquare number={6} />
-      <PuckSquare number={8} />
-      <PuckSquare number={9} />
-      <PuckSquare number={10} />
-      <button onClick={rollDice}>Roll Dice</button>
+      <PuckSquaresRow />
+      <div className = "bg-green-700 rounded-lg h-12 border-2 border-white">
+        {/* Pass line */}
+        <span className="font-bold text-lg text-white">Pass Line</span>
+      </div>
+      <div className="flex space-x-4 py-4"> {/* Flex container with horizontal spacing */}
+        <Dice value={gameState.dice[0]} />
+        <Dice value={gameState.dice[1]} />
+      </div>
+      <button
+          onClick={rollDice}
+          className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition"
+      >
+        Roll Dice
+      </button>
     </div>
   );
 };
