@@ -1,13 +1,12 @@
 import { useContext } from 'react';
-import { GameContext } from '../context/GameContext'; // Import context
+import { GameContext } from '../context/GameContext';
 
 const useCrapsGame = () => {
-    const { gameState, setGameState } = useContext(GameContext); // Access context state and updater
+    const { gameState, setGameState } = useContext(GameContext);
 
-    // Dice roll function
     const rollDice = () => {
         const dice = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1];
-        const total = dice[0] + dice[1]; // Calculate score from dice roll
+        const total = dice[0] + dice[1];
 
         // puck off
         if (!gameState.isPuckOn) {
@@ -24,7 +23,7 @@ const useCrapsGame = () => {
                 setGameState({ ...gameState, dice, isPuckOn: true, puckLocation: total, message: total });
             }
         }
-        // puck is on
+        // puck on
         else {
             // win
             if (total === gameState.puckLocation) {
