@@ -4,7 +4,7 @@ import Dice from "./Dice";
 import useCrapsGame from "../hooks/useCrapsGame";
 
 const CrapsTable = () => {
-  const { gameState, rollDice } = useCrapsGame();
+  const { gameState, rollDice, betPass } = useCrapsGame();
 
  // Eventually put these puck swaures into a bigger container for all the number spots
  // container for place and buy
@@ -17,12 +17,19 @@ const CrapsTable = () => {
   return (
     <div>
       <h2>{gameState.message} | Puck is: {gameState.isPuckOn ? gameState.puckLocation : 'OFF'}</h2>
+      <h3>Money: {gameState.score} | Current Bet: {gameState.currentBet}</h3>
       <h2>Dice: {gameState.dice[0]} - {gameState.dice[1]}</h2>
       <PuckSquaresRow />
       <div className = "bg-green-700 rounded-lg h-12 border-2 border-white">
         {/* Pass line */}
         <span className="font-bold text-lg text-white">Pass Line</span>
       </div>
+      <button
+          onClick={betPass}
+          className="bg-green-700 rounded-lg h-12 border-2 border-white font-bold text-lg text-white"
+      >
+        Bet Pass
+      </button>
       <div className="flex space-x-4 py-4"> {/* Flex container with horizontal spacing */}
         <Dice value={gameState.dice[0]} />
         <Dice value={gameState.dice[1]} />

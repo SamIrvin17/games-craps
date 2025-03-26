@@ -8,7 +8,10 @@ const GameContextProvider = ({ children }) => {
     total: 7,
     isPuckOn: false,
     puckLocation: 5,
-    message: 'Welcome to the Craps game!'
+    message: 'Welcome to the Craps game!',
+    score: 100,
+    currentBet: 0,
+    isBettingPass: false,
   });
 
   return (

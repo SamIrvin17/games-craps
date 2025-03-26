@@ -12,11 +12,11 @@ const useCrapsGame = () => {
         if (!gameState.isPuckOn) {
             // win
             if (total === 7 || total === 11) {
-                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You win!' });
+                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You win!', score: gameState.score + (gameState.currentBet * 2), currentBet: 0, isbettingPass: false, });
             }
             // crap out
             else if (total === 2 || total === 3 || total === 12) {
-                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You lose!' });
+                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You lose!', currentBet: 0, isbettingPass: false, });
             }
             // turn puck on
             else {
@@ -27,11 +27,11 @@ const useCrapsGame = () => {
         else {
             // win
             if (total === gameState.puckLocation) {
-                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You win!' });
+                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You win!', score: gameState.score + (gameState.currentBet * 2), currentBet: 0, isbettingPass: false });
             }
             // crap out
             else if (total === 7) {
-                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You lose!' });
+                setGameState({ ...gameState, dice, isPuckOn: false, message: 'You lose!', currentBet: 0, isbettingPass: false });
             }
             // continue
             else {
@@ -40,9 +40,14 @@ const useCrapsGame = () => {
         };
     };
 
+    const betPass = () => {
+        setGameState({ ...gameState, currentBet: 25, score: gameState.score - 25, isbettingPass: true });
+    }
+
     return {
         gameState,
         rollDice,
+        betPass,
     };
 };
 

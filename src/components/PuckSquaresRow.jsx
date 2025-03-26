@@ -9,9 +9,9 @@ const PuckSquaresRow = () => {
 
   return (
     <div className="flex justify-between space-x-4 py-4 bg-green-700 px-8 rounded-lg">
-      {/* fix later but off puck is in the top left of the screen not this container */}
+      {/* fix later but off puck is in the top left of the screen not this container, when fixing puck set bg-white to see it*/}
       {!isPuckOn && (
-        <div className="absolute top-2 left-2 w-8 h-8 bg-white rounded-full" />
+        <div className="static top-2 left-2 w-8 h-8 bg-black rounded-full" > OFF </div>
       )}
       {puckNumbers.map((number) => (
         <PuckSquare key={number} number={number} />

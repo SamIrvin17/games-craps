@@ -15,8 +15,9 @@ const PuckSquare = ({ number }) => {
 
       {/* Display the craps puck on the square when the puck is on it */}
       {isPuckOn && puckLocation === number && (
-        <div className="absolute w-8 h-8 bg-white rounded-full shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute w-8 h-8 bg-white text-black rounded-full shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {/* This can be replaced with an image or other design for the puck */}
+          ON
         </div>
       )}
     </div>
