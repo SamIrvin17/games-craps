@@ -8,13 +8,15 @@ const GameContext = createContext();
  * players: player[]
  * isPuckOn: boolean
  * puckLocation: number?
+ * currentBetterId: string,
+ * currentBetType: enum?,
  * dice: [number, number]
  * message: string?
  * 
  * 
  * Player
  * 
- * id: number
+ * id: string
  * name: string
  * color: color enum
  * balance: number
@@ -53,11 +55,19 @@ const GameContextProvider = ({ children }) => {
         bets: [],
       }
     ],
+    
     dice: [1, 6],
     isPuckOn: false,
     puckLocation: 5,
     currentBetterId: 'Player1',
+    currentBetType: null,
     message: 'Welcome to the Craps game!',
+
+    bets: {
+      passBets: [],
+      dontPassBets: [],
+    }
+
   });
 
   return (
