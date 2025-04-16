@@ -20,23 +20,19 @@ const CrapsTable = () => {
       <h3>Money: {gameState.score} | Current Bet: {gameState.currentBet}</h3>
       <h2>Dice: {gameState.dice[0]} - {gameState.dice[1]}</h2>
       <PuckSquaresRow />
-      <div className = "bg-green-700 rounded-lg h-12 border-2 border-white">
+      <div
+        onClick={betPass}
+        className = "bg-green-700 rounded-lg h-12 border-2 border-white flex items-center justify-center cursor-pointer hover:bg-green-600 transition"
+      >
         {/* Pass line */}
         <span className="font-bold text-lg text-white">Pass Line</span>
       </div>
-      <button
-          onClick={betPass}
-          className="bg-green-700 rounded-lg h-12 border-2 border-white font-bold text-lg text-white"
-      >
-        Bet Pass
-      </button>
       <div className="flex space-x-4 py-4"> {/* Flex container with horizontal spacing */}
         <Dice value={gameState.dice[0]} />
         <Dice value={gameState.dice[1]} />
       </div>
       <button
           onClick={rollDice}
-          className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition"
       >
         Roll Dice
       </button>
