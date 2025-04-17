@@ -2,10 +2,12 @@ import React from "react";
 import PuckSquaresRow from "./PuckSquaresRow";
 import Dice from "./Dice";
 import useCrapsGame from "../hooks/useCrapsGame";
-import betType from "../common/BetType";
+import BetTypes from "../common/BetType";
 
 const CrapsTable = () => {
   const { gameState, placeBet, rollDice, setBetterId, setBetType } = useCrapsGame();
+
+  const [selectedBet, setSelectedBet] = React.useState(gameState.currentBetType);
 
  // Eventually put these puck swaures into a bigger container for all the number spots
  // container for place and buy
@@ -15,20 +17,26 @@ const CrapsTable = () => {
  // container for don't pass and pass
  // container for side bets
 
+  React.useEffect(() => {
+    setBetType(selectedBet);
+  }, [selectedBet])
+
+  const handleBetClick = (betType) => () => {
+    setSelectedBet(betType);
+    placeBet(25);
+  }
+
   return (
     <div>
       <h2>{gameState.message} | Puck is: {gameState.isPuckOn ? gameState.puckLocation : 'OFF'}</h2>
       <h3>Player 1: {gameState.players[0].balance} | Player 2: {gameState.players[1].balance} | Player 3: {gameState.players[2].balance}</h3>
-      <h3>Selected Player: {gameState.currentBetterId} | Bet Type {gameState.currentBetType === 0 ? 'Pass Line ' : 'Don\'t Pass Line'}</h3>
+      <h3>Selected Player: {gameState.currentBetterId} | Bet Type {gameState.currentBetType}</h3>
       <h2>Dice: {gameState.dice[0]} - {gameState.dice[1]}</h2>
       
       <PuckSquaresRow />
 
       <div
-        onClick={() => {
-          setBetType(betType.DONT_PASS_LINE);
-          placeBet(25);
-        }}
+        onClick={handleBetClick(BetTypes.DONT_PASS_LINE_BET)}
         className = "bg-green-700 rounded-lg h-12 border-2 border-white flex items-center justify-center cursor-pointer hover:bg-green-600 transition"
       >
         {/* Pass line */}
@@ -36,10 +44,7 @@ const CrapsTable = () => {
       </div>
 
       <div
-        onClick={() => {
-          setBetType(betType.PASS_LINE);
-          placeBet(25);
-        }}
+        onClick={handleBetClick(BetTypes.PASS_LINE_BET)}
         className = "bg-green-700 rounded-lg h-12 border-2 border-white flex items-center justify-center cursor-pointer hover:bg-green-600 transition"
       >
         {/* Pass line */}

@@ -1,6 +1,6 @@
-const betType = Object.freeze({
-    PASS_LINE: 0,
-    DONT_PASS_LINE: 1,
+const BetTypes = Object.freeze({
+    PASS_LINE_BET: 'passBets',
+    DONT_PASS_LINE_BET: 'dontPassBets',
 });
 
-export default betType;
+export default BetTypes;

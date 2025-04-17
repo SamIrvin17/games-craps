@@ -36,16 +36,18 @@ const useCrapsGame = () => {
             balance: player.balance - amount,
         };
 
+        const updatedBets = {
+            ...gameState.bets,
+            [gameState.currentBetType]: [
+                ...gameState.bets[gameState.currentBetType],
+                { playerId: gameState.currentBetterId, amount },
+            ],
+        };
+
         setGameState({
             ...gameState,
             players: updatePlayers,
-            bets: {
-                passBets:
-                [
-                    ...gameState.bets.passBets,
-                    { playerId: gameState.currentBetterId, amount}
-                ]
-            },
+            bets: updatedBets,
             message: "Bet placed successfully"
         });
     }

@@ -1,9 +1,9 @@
-import betType from "../BetType";
+import BetTypes from "../BetType";
 
 const getBetsByType = (allBets, currentType) => {
-    if (currentType === betType.PASS_LINE)
+    if (currentType === BetTypes.PASS_LINE_BET)
         return allBets.passBets;
-    if (currentType === betType.DONT_PASS_LINE)
+    if (currentType === BetTypes.DONT_PASS_LINE_BET)
         return allBets.dontPassBets;
     return [];
 }

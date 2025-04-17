@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import BetTypes from '../common/BetType';
 
 const GameContext = createContext();
 
@@ -60,7 +61,7 @@ const GameContextProvider = ({ children }) => {
     isPuckOn: false,
     puckLocation: 5,
     currentBetterId: 'Player1',
-    currentBetType: null,
+    currentBetType: BetTypes.PASS_LINE_BET,
     message: 'Welcome to the Craps game!',
 
     bets: {
